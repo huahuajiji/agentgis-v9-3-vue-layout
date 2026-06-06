@@ -53,6 +53,17 @@ The prototype stores settings in browser `localStorage` under the `agentgis:v9_3
 6. Review local operations and commits in the history/inspector surfaces.
 7. Export GeoJSON when needed.
 
+## Mobile Workflow
+
+On viewports below the desktop breakpoint, the app switches to a four-tab mobile workspace:
+
+- `Map`: shows the live map surface, current map summary, save action, and mode/tool controls.
+- `Project`: switches saved maps and manages image resources.
+- `Data`: opens work layers, reference layers, GeoJSON transfer, and operation history.
+- `Mine`: shows current map counts and opens account/BYOK settings.
+
+The mobile map uses the same document state and AMap integration as desktop. Drawing and geometry editing still require a selected work layer and valid AMap credentials.
+
 ## Demo Routes
 
 The demo routes isolate AMap MouseTool behavior from the larger app shell:
@@ -70,4 +81,3 @@ Important localStorage keys:
 
 - `agentgis:v9_3:settings`
 - map document state key defined in `src/shared/mapDocument/mapDocumentPersistence.ts`
-

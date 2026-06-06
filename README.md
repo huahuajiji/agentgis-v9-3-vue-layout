@@ -8,7 +8,7 @@ This repository contains only the `vue-layout` project from the V9.3 exploration
 
 - Vue 3 + TypeScript + Vite application shell.
 - Desktop command-center layout with map workspace, left document/layer pane, right inspector, and account/settings modal.
-- Mobile shell for smaller viewports.
+- Mobile workspace with map, project, data, and account tabs for smaller viewports.
 - Pinia stores for local map document state and account/BYOK settings.
 - Map document model with layers, features, saved documents, draft document state, local commits, undo/redo, and external operation records.
 - GeoJSON import/export helpers.
@@ -54,6 +54,15 @@ Credentials are stored only in browser `localStorage` for this prototype. Do not
 - `/mousetool-vue-demo` - isolated MouseTool drawing demo.
 - `/mousetool-transition-demo` - MouseTool transition/operation demo.
 
+## Mobile Experience
+
+The mobile layout is now a functional version of the same map document workflow rather than a placeholder shell:
+
+- Map tab: live map surface, document summary, save action, map mode selector, draw/edit controls.
+- Project tab: saved map list and layer image resources.
+- Data tab: work layers, reference layers, GeoJSON transfer, and operation history.
+- Mine tab: current map summary and account/BYOK settings.
+
 ## Documentation
 
 - [Usage Guide](docs/USAGE.md)
@@ -73,4 +82,3 @@ This is a prototype, not a production GIS platform. The strongest parts are the 
 - Vue Router 4
 - Zod 4
 - `@amap/amap-jsapi-loader`
-

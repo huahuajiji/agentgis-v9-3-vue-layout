@@ -12,7 +12,9 @@ The app is organized around a Vue Router shell:
 - `src/router.ts` defines the main workspace routes and demo routes.
 - `src/layouts/AppLayout.vue` mounts both desktop and mobile shells.
 - `src/components/DesktopShell.vue` contains the main desktop workspace composition.
-- `src/components/mobile/MobileShell.vue` contains the mobile shell.
+- `src/components/mobile/MobileShell.vue` contains the mobile workspace.
+
+The desktop shell favors simultaneous panes. The mobile shell turns the same workspace into four task tabs: map, project, data, and account. Both shells use the same Pinia stores and map document model.
 
 ## State
 
@@ -77,7 +79,8 @@ Included:
 - local map document editing
 - AMap drawing/editing integration
 - GeoJSON import/export
-- desktop/mobile UI shells
+- desktop command-center UI
+- mobile tabbed workspace for map/project/data/account flows
 
 Not included:
 
@@ -88,4 +91,3 @@ Not included:
 - server-side map processing
 - automated test suite
 - CI/CD pipeline
-

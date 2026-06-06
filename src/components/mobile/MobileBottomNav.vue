@@ -5,8 +5,8 @@ const activeTab = defineModel<MobileTab>('activeTab', { required: true });
 
 const tabs: Array<{ id: MobileTab; label: string }> = [
   { id: 'map', label: '地图' },
-  { id: 'info', label: '信息' },
-  { id: 'edit', label: '编辑' },
+  { id: 'project', label: '项目' },
+  { id: 'data', label: '数据' },
   { id: 'mine', label: '我的' }
 ];
 </script>

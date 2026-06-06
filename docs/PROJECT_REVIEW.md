@@ -2,7 +2,7 @@
 
 ## Short Assessment
 
-AgentGIS V9.3 Vue Layout is a strong prototype for validating the product shape of a GIS document workspace. It has moved beyond a static layout: the project includes a typed document model, local persistence, layer/feature operations, GeoJSON flows, AMap integration, and operation history concepts.
+AgentGIS V9.3 Vue Layout is a strong prototype for validating the product shape of a GIS document workspace. It has moved beyond a static layout: the project includes a typed document model, local persistence, layer/feature operations, GeoJSON flows, AMap integration, operation history concepts, and a mobile workflow that now maps the core product tasks onto a four-tab structure.
 
 It should still be treated as a prototype. The architecture is promising, but the repository is not yet ready to be described as a production GIS app.
 
@@ -13,13 +13,14 @@ It should still be treated as a prototype. The architecture is promising, but th
 - Useful local editing concepts: undo/redo, local commits, external operation matching, and GeoJSON import/export are already present.
 - Good integration boundary: AMap loading, drawing sessions, edit sessions, and feature overlay syncing are separated from the general app shell.
 - BYOK posture: the project does not ship credentials, and users bring their own map keys.
+- The mobile version is no longer just a responsive placeholder; it exposes map, project, data, and account workflows against the same underlying state model.
 
 ## Risks
 
 - No automated tests yet. The map document mutation layer and operation compaction logic deserve focused unit tests before more features are added.
 - Credentials are stored in localStorage. Acceptable for a prototype, not acceptable as a production security pattern.
 - No backend contract. Persistence, sync, collaboration, and AI operation execution are still local-only concepts.
-- UI copy and product states need hardening before public user testing. Some flows are still prototype-grade.
+- UI copy and product states need hardening before public user testing. Some flows are still prototype-grade, especially around mobile empty/error states and AMap credential failure states.
 - AMap behavior depends on external credentials and network state, so demos should be tested in the same region/network conditions as target users.
 
 ## Recommended Next Steps
@@ -33,7 +34,7 @@ It should still be treated as a prototype. The architecture is promising, but th
 
 ## Score
 
-Prototype quality: 8/10.
+Prototype quality: 8.2/10.
 
 Production readiness: 5/10.
 

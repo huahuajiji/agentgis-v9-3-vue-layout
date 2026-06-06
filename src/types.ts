@@ -11,5 +11,5 @@ export const INSPECTOR_TABS = [
 ] as const;
 
 export type InspectorMode = typeof INSPECTOR_TABS[number]['id'];
-export type MobileTab = 'map' | 'info' | 'edit' | 'mine';
+export type MobileTab = 'map' | 'project' | 'data' | 'mine';
 export type MobileEditMode = 'manual' | 'agent' | 'preview';

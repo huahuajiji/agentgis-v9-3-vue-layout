@@ -1,83 +1,81 @@
-# Usage Guide
+# 使用说明
 
-## Install
+## 安装依赖
 
 ```powershell
 npm install
 ```
 
-## Run Locally
+## 本地运行
 
 ```powershell
 npm run dev
 ```
 
-Vite serves the app on `127.0.0.1` by default. Open the printed URL in a browser.
+Vite 默认会监听 `127.0.0.1`。打开终端里输出的本地地址即可。
 
-## Build
+## 构建
 
 ```powershell
 npm run build
 ```
 
-This runs TypeScript/Vue type checking through `vue-tsc --noEmit`, then creates a production build with Vite.
+构建命令会先执行 `vue-tsc --noEmit` 做 TypeScript/Vue 类型检查，再用 Vite 生成生产构建。
 
-## Preview A Production Build
+## 预览生产构建
 
 ```powershell
 npm run preview
 ```
 
-Run this after `npm run build`.
+请先运行 `npm run build`，再启动 preview。
 
-## Using AMap/Gaode
+## 使用高德地图
 
-The base map is optional. Without credentials, the map area shows a fallback message.
+底图是可选能力。没有配置 Key 时，地图区域会显示未配置提示。
 
-To enable the base map:
+开启底图：
 
-1. Open the account/settings modal.
-2. Enable BYOK.
-3. Fill in AMap JS API Key and Security Code.
-4. Save.
+1. 打开账户/设置弹窗。
+2. 开启 BYOK。
+3. 填写高德 JS API Key 和 Security Code。
+4. 保存。
 
-The prototype stores settings in browser `localStorage` under the `agentgis:v9_3:settings` key. Map document state is also local-only.
+当前原型会把设置保存在浏览器 `localStorage` 的 `agentgis:v9_3:settings` key 下。地图文档状态也是本地存储，不会同步到服务器。
 
-## Main Workflow
+## 主流程
 
-1. Open `/map`.
-2. Create or select a map document from the left workspace.
-3. Create a layer.
-4. Import GeoJSON or draw features on the map.
-5. Select a layer or feature to inspect and edit it.
-6. Review local operations and commits in the history/inspector surfaces.
-7. Export GeoJSON when needed.
+1. 打开 `/map`。
+2. 在左侧工作区创建或切换地图文档。
+3. 创建正式图层或参考图层。
+4. 导入 GeoJSON，或在地图上绘制要素。
+5. 选择图层/要素，在检查器中查看和编辑。
+6. 在历史/检查器区域查看本地操作、撤销/重做和提交记录。
+7. 需要时导出 GeoJSON。
 
-## Mobile Workflow
+## 移动端流程
 
-On viewports below the desktop breakpoint, the app switches to a four-tab mobile workspace:
+在低于桌面断点的视口里，应用会切换成四个 tab 的移动工作台：
 
-- `Map`: shows the live map surface, current map summary, save action, and mode/tool controls.
-- `Project`: switches saved maps and manages image resources.
-- `Data`: opens work layers, reference layers, GeoJSON transfer, and operation history.
-- `Mine`: shows current map counts and opens account/BYOK settings.
+- `地图`：实时地图、当前地图摘要、保存按钮、模式/工具控制。
+- `项目`：切换已保存地图，管理图片资源。
+- `数据`：正式图层、参考图层、GeoJSON、操作历史。
+- `我的`：当前地图统计和账户/BYOK 设置入口。
 
-The mobile map uses the same document state and AMap integration as desktop. Drawing and geometry editing still require a selected work layer and valid AMap credentials.
+移动端地图使用和桌面端相同的文档状态、高德地图集成、绘制/编辑逻辑。绘制和几何编辑仍然需要选中正式图层，并配置有效的高德地图凭据。
 
-## Demo Routes
+## Demo 路由
 
-The demo routes isolate AMap MouseTool behavior from the larger app shell:
+以下路由把高德 MouseTool 行为从主应用中拆出来，方便单独验证绘制和编辑流程：
 
 - `/mousetool-vue-demo`
 - `/mousetool-transition-demo`
 
-Use them when validating drawing, editing, and transition behavior against the AMap JS API.
+## 重置本地状态
 
-## Reset Local State
+可以使用应用内的重置动作，或者清空当前站点的浏览器 localStorage。
 
-Use the in-app reset actions where available, or clear browser localStorage for this origin.
-
-Important localStorage keys:
+重要 localStorage key：
 
 - `agentgis:v9_3:settings`
-- map document state key defined in `src/shared/mapDocument/mapDocumentPersistence.ts`
+- 地图文档状态 key 定义在 `src/shared/mapDocument/mapDocumentPersistence.ts`

@@ -1,79 +1,79 @@
 # AgentGIS V9.3 Vue Layout
 
-AgentGIS V9.3 Vue Layout is a Vue 3 prototype for a GIS-oriented map document workspace. It explores how a map canvas, layer/document management, feature inspection, operation history, and AI/external operation review can live in one focused interface.
+AgentGIS V9.3 Vue Layout 是一个基于 Vue 3 的 GIS 地图文档工作台原型。它重点探索一件事：地图画布、图层/文档管理、要素检查、操作历史、AI/外部操作审核，怎样被组织进一个足够清晰、可继续扩展的产品界面里。
 
-This repository contains only the `vue-layout` project from the V9.3 exploration. It is intentionally frontend-only: there is no backend service, no hosted database, and no bundled map API credentials.
+这个仓库只包含 V9.3 探索里的 `vue-layout` 项目。它是纯前端原型：没有后端服务、没有托管数据库，也不会内置任何地图 API Key。
 
-## What It Includes
+## 包含内容
 
-- Vue 3 + TypeScript + Vite application shell.
-- Desktop command-center layout with map workspace, left document/layer pane, right inspector, and account/settings modal.
-- Mobile workspace with map, project, data, and account tabs for smaller viewports.
-- Pinia stores for local map document state and account/BYOK settings.
-- Map document model with layers, features, saved documents, draft document state, local commits, undo/redo, and external operation records.
-- GeoJSON import/export helpers.
-- Optional AMap/Gaode base map integration through user-provided JS API credentials.
-- MouseTool drawing/editing demos for validating AMap drawing flows.
+- Vue 3 + TypeScript + Vite 应用骨架。
+- 桌面端指挥台布局：地图工作区、左侧文档/图层面板、右侧检查器、账户/设置弹窗。
+- 移动端工作台：地图、项目、数据、我的四个 tab，覆盖主要移动工作流。
+- Pinia 本地状态：地图文档状态、账户设置、BYOK 配置。
+- 地图文档模型：图层、要素、已保存地图、草稿地图、本地提交、撤销/重做、外部操作记录。
+- GeoJSON 导入/导出能力。
+- 可选的高德地图底图集成，使用用户自己提供的 JS API Key 和 Security Code。
+- MouseTool 绘制/编辑 demo，用于验证高德地图绘制流程。
 
-## Quick Start
+## 快速开始
 
 ```powershell
 npm install
 npm run dev
 ```
 
-Open the local URL printed by Vite. By default the app starts at `/map`.
+打开 Vite 输出的本地地址即可。默认入口会跳转到 `/map`。
 
-Build check:
+构建检查：
 
 ```powershell
 npm run build
 ```
 
-The project was verified from a fresh clone with `npm install` and `npm run build`.
+这个项目已经用全新 clone 流程验证过：`npm install` 和 `npm run build` 可以通过。
 
-## Map Credentials
+## 地图 Key 配置
 
-The app does not ship with map API keys. To load the AMap/Gaode base map:
+仓库不包含任何地图 API Key。要加载高德底图，需要在应用里配置：
 
-1. Open the account/settings modal in the app.
-2. Enable BYOK.
-3. Enter your AMap JS API Key and Security Code.
-4. Save settings.
+1. 打开账户/设置弹窗。
+2. 开启 BYOK。
+3. 填写高德 JS API Key 和 Security Code。
+4. 保存设置。
 
-Credentials are stored only in browser `localStorage` for this prototype. Do not treat this as a production credential-management pattern.
+当前原型会把这些配置保存在浏览器 `localStorage`。这适合原型验证，不是生产环境的凭据管理方案。
 
-## Routes
+## 路由
 
-- `/map` - main map workspace.
-- `/project` - project section shell.
-- `/data` - data section shell.
-- `/ai` - AI section shell.
-- `/history` - history section shell.
-- `/settings` - settings section shell.
-- `/mousetool-vue-demo` - isolated MouseTool drawing demo.
-- `/mousetool-transition-demo` - MouseTool transition/operation demo.
+- `/map`：主地图工作区。
+- `/project`：项目区壳。
+- `/data`：数据区壳。
+- `/ai`：AI 区壳。
+- `/history`：历史区壳。
+- `/settings`：设置区壳。
+- `/mousetool-vue-demo`：独立 MouseTool 绘制 demo。
+- `/mousetool-transition-demo`：MouseTool 状态切换/操作 demo。
 
-## Mobile Experience
+## 移动端体验
 
-The mobile layout is now a functional version of the same map document workflow rather than a placeholder shell:
+移动端现在不是占位壳，而是接入了同一套地图文档工作流：
 
-- Map tab: live map surface, document summary, save action, map mode selector, draw/edit controls.
-- Project tab: saved map list and layer image resources.
-- Data tab: work layers, reference layers, GeoJSON transfer, and operation history.
-- Mine tab: current map summary and account/BYOK settings.
+- 地图：实时地图区域、当前文档摘要、保存动作、地图模式选择、绘制/编辑控件。
+- 项目：地图列表和图层图片资源。
+- 数据：正式图层、参考图层、GeoJSON 导入导出、操作历史。
+- 我的：当前地图摘要和账户/BYOK 设置。
 
-## Documentation
+## 文档
 
-- [Usage Guide](docs/USAGE.md)
-- [Architecture Notes](docs/ARCHITECTURE.md)
-- [Project Review](docs/PROJECT_REVIEW.md)
+- [使用说明](docs/USAGE.md)
+- [架构说明](docs/ARCHITECTURE.md)
+- [项目评价](docs/PROJECT_REVIEW.md)
 
-## Current Status
+## 当前状态
 
-This is a prototype, not a production GIS platform. The strongest parts are the interaction model, document state shape, and local editing workflow. The main gaps are backend persistence, authentication, tests, deployment configuration, and production-grade credential handling.
+这是一个原型，不是生产级 GIS 平台。它比较强的部分是交互模型、地图文档状态设计和本地编辑工作流。主要缺口是后端持久化、登录鉴权、自动化测试、部署配置和生产级凭据管理。
 
-## Tech Stack
+## 技术栈
 
 - Vue 3.5
 - TypeScript 5.7

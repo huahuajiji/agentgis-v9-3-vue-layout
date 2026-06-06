@@ -1,41 +1,41 @@
-# Project Review
+# 项目评价
 
-## Short Assessment
+## 简短结论
 
-AgentGIS V9.3 Vue Layout is a strong prototype for validating the product shape of a GIS document workspace. It has moved beyond a static layout: the project includes a typed document model, local persistence, layer/feature operations, GeoJSON flows, AMap integration, operation history concepts, and a mobile workflow that now maps the core product tasks onto a four-tab structure.
+AgentGIS V9.3 Vue Layout 是一个比较扎实的 GIS 地图文档工作台原型。它已经不只是静态布局：项目里有类型化的地图文档模型、本地持久化、图层/要素操作、GeoJSON 流程、高德地图集成、操作历史概念，以及一套把核心任务映射到四个 tab 的移动端工作流。
 
-It should still be treated as a prototype. The architecture is promising, but the repository is not yet ready to be described as a production GIS app.
+但它仍然应该被视为原型。架构方向是有潜力的，不过现在还不能把它描述成生产级 GIS 应用。
 
-## Strengths
+## 优点
 
-- Clear workspace direction: map canvas, document/layer pane, inspector, operation history, and account/settings surfaces are separated in a way that can scale.
-- TypeScript-first model: map documents, layers, features, operations, and commits are represented with explicit schemas and types.
-- Useful local editing concepts: undo/redo, local commits, external operation matching, and GeoJSON import/export are already present.
-- Good integration boundary: AMap loading, drawing sessions, edit sessions, and feature overlay syncing are separated from the general app shell.
-- BYOK posture: the project does not ship credentials, and users bring their own map keys.
-- The mobile version is no longer just a responsive placeholder; it exposes map, project, data, and account workflows against the same underlying state model.
+- 工作台方向清楚：地图画布、文档/图层面板、检查器、操作历史、账户/设置区域彼此分工明确，后续可以扩展。
+- TypeScript 优先：地图文档、图层、要素、操作、提交都有明确 schema 和类型。
+- 本地编辑概念完整：撤销/重做、本地提交、外部操作匹配、GeoJSON 导入导出已经具备。
+- 地图集成边界清晰：高德加载、绘制会话、编辑会话、要素 overlay 同步都和通用应用壳分开。
+- BYOK 姿态正确：仓库不带凭据，用户自己提供地图 Key。
+- 移动端已经不是响应式占位页，而是围绕地图、项目、数据、账户四个任务区接入了同一套底层状态。
 
-## Risks
+## 风险
 
-- No automated tests yet. The map document mutation layer and operation compaction logic deserve focused unit tests before more features are added.
-- Credentials are stored in localStorage. Acceptable for a prototype, not acceptable as a production security pattern.
-- No backend contract. Persistence, sync, collaboration, and AI operation execution are still local-only concepts.
-- UI copy and product states need hardening before public user testing. Some flows are still prototype-grade, especially around mobile empty/error states and AMap credential failure states.
-- AMap behavior depends on external credentials and network state, so demos should be tested in the same region/network conditions as target users.
+- 还没有自动化测试。`src/shared/mapDocument/*` 里的 mutation 和操作压缩逻辑应该优先补单元测试。
+- 凭据存在 localStorage。原型可以接受，生产环境不应该这样做。
+- 没有后端契约。持久化、同步、协作和 AI 操作执行都还只是本地概念。
+- UI 文案和产品状态还需要打磨，尤其是移动端空状态、错误状态和高德凭据失败状态。
+- 高德地图行为依赖外部凭据和网络环境，demo 应该在目标用户相近的网络/地区环境里验证。
 
-## Recommended Next Steps
+## 建议下一步
 
-1. Add unit tests for `src/shared/mapDocument/*`.
-2. Add a small set of user-behavior tests for the main document/layer/feature workflows.
-3. Define a backend API contract for saved map documents, commits, and external operation review.
-4. Replace localStorage credential storage with a safer deployment-specific secret flow.
-5. Add a sample GeoJSON file and a documented demo path for first-time reviewers.
-6. Add CI that runs `npm install` and `npm run build` on every push.
+1. 给 `src/shared/mapDocument/*` 补单元测试。
+2. 给地图文档、图层、要素的主流程补少量用户行为测试。
+3. 定义已保存地图、本地提交、外部操作审核的后端 API 契约。
+4. 用更安全的部署方案替换 localStorage 凭据存储。
+5. 加一个示例 GeoJSON 文件和一条明确的“首次体验路径”。
+6. 增加 CI，在每次 push 时运行 `npm install` 和 `npm run build`。
 
-## Score
+## 评分
 
-Prototype quality: 8.2/10.
+原型质量：8.2/10。
 
-Production readiness: 5/10.
+生产就绪度：5/10。
 
-The foundation is thoughtful. The next quality jump is not more UI surface; it is tests, backend contracts, and a clean reviewer/demo path.
+这个项目的底子是认真做过的。下一步真正能提升质量的，不是继续堆 UI，而是补测试、补后端契约，并把给评审/试用者的体验路径打磨干净。

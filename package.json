@@ -1,7 +1,7 @@
 {
   "name": "agentgis-v9-3-vue-layout",
   "version": "0.1.0",
-  "description": "AgentGIS v9.3 Vue layout and map document editor prototype.",
+  "description": "AgentGIS v9.3 Vue 地图文档工作台原型。",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vue-tsc --noEmit && vite build",
